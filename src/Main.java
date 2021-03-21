@@ -17,7 +17,7 @@ class Main {
 
 
         }
-        Collection.stream()
+        long count = persons.stream()
                 .filter(value -> value.age() < 18)
                 .count();
         System.out.println(count);

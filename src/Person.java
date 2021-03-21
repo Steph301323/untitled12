@@ -1,7 +1,8 @@
+import java.util.*;
 class Person {
     private String name;
     private String family;
-    private Integer age;
+    public Integer age;
     private Sex sex;
     private Education education;
 

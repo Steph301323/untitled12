@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 class Main {
     public static void main(String[] args) {
@@ -18,9 +19,28 @@ class Main {
 
         }
         long count = persons.stream()
-                .filter(value -> value.age() < 18)
+                .filter(value -> value.getAge() < 18)
                 .count();
         System.out.println(count);
+
+        List<String> die = persons.stream()
+                .filter(value -> value.getAge() > 18)
+                .filter(value -> value.getAge() < 27)
+                .map(value -> value.getFamily() + Sex.MAN)
+                .collect(Collectors.toList());
+        System.out.println(die);
+
+        List<String> sandwich = persons.stream()
+                .filter(value -> value.getAge() > 18)
+                .filter(value -> value.getAge() < 60)
+                .filter(value ->  value.getSex().WOMEN)
+                .sorted(Comparator.comparing().families)
+
+
+                .collect(Collectors.toList());
+        System.out.println(sandwich);
+
+
 
 
 

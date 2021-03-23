@@ -1,8 +1,9 @@
 import java.util.*;
+
 class Person {
     private String name;
     private String family;
-    public Integer age;
+    private Integer age;
     private Sex sex;
     private Education education;
 
@@ -44,4 +45,6 @@ class Person {
                 ", education=" + education +
                 '}';
     }
+
+
 }

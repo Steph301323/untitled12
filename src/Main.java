@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 class Main {
     public static void main(String[] args) {
@@ -14,7 +15,6 @@ class Main {
                     Sex.values()[new Random().nextInt(Sex.values().length)],
                     Education.values()[new Random().nextInt(Education.values().length)])
             );
-
 
 
         }
@@ -33,17 +33,14 @@ class Main {
         List<String> sandwich = persons.stream()
                 .filter(value -> value.getAge() > 18)
                 .filter(value -> value.getAge() < 60)
-                .filter(value ->  value.getSex().WOMEN)
-                .sorted(Comparator.comparing().families)
+                .filter(value -> value.getSex() == Sex.WOMEN)
+                .filter(value -> value.getAge() < 65)
+                .filter(value -> value.getSex() == Sex.MAN)
+                .filter(value -> value.getEducation() == Education.HIGHER)
+                .sorted(Comparator.comparing( v -> v.getFamily())
 
-
-                .collect(Collectors.toList());
+                        .collect(Collectors.toList());
         System.out.println(sandwich);
-
-
-
-
-
 
 
     }

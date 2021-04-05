@@ -30,16 +30,11 @@ class Main {
                 .collect(Collectors.toList());
         System.out.println(die);
 
-        List<String> sandwich = persons.stream()
-                .filter(value -> value.getAge() > 18)
-                .filter(value -> value.getAge() < 60)
-                .filter(value -> value.getSex() == Sex.WOMEN)
-                .filter(value -> value.getAge() < 65)
-                .filter(value -> value.getSex() == Sex.MAN)
-                .filter(value -> value.getEducation() == Education.HIGHER)
-                .sorted(Comparator.comparing( v -> v.getFamily())
-
-                        .collect(Collectors.toList());
+        List<Person> sandwich = persons.stream()
+                .filter(value -> value.getAge() > 18 && value.getAge() < 60 && value.getSex() == Sex.WOMEN && value.getEducation() == Education.HIGHER)
+                .filter(value -> value.getAge() < 65 && value.getSex() == Sex.MAN && value.getEducation() == Education.HIGHER)
+                .sorted(Comparator.comparing(Person::getFamily))
+                .collect(Collectors.toList());
         System.out.println(sandwich);
 
 

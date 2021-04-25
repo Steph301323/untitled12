@@ -32,7 +32,8 @@ class Main {
         System.out.println(die);
 
         List<String> sandwich = persons.stream()
-                .filter(value -> value.getAge() > 18 && value.getAge() < 60 && value.getSex() == Sex.WOMEN && value.getEducation() == Education.HIGHER)
+                .filter(value -> value.getAge() > 18 || value.getAge() < 60 || value.getSex() == Sex.WOMEN || value.getEducation() == Education.HIGHER)
+                .filter(value ->  value.getAge() < 65 || value.getSex() == Sex.MAN || value.getEducation() == Education.HIGHER)
                 .sorted(Comparator.comparing(Person::getFamily))
                 .map(v -> v.getFamily())
                 .collect(Collectors.toList());

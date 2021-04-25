@@ -26,13 +26,15 @@ class Main {
         List<String> die = persons.stream()
                 .filter(value -> value.getAge() > 18)
                 .filter(value -> value.getAge() < 27)
-                .map(value -> value.getFamily() + Sex.MAN)
+                .filter(value -> value.getSex() == Sex.MAN)
+                .map(p -> p.getFamily())
                 .collect(Collectors.toList());
         System.out.println(die);
 
-        List<Person> sandwich = persons.stream()
+        List<String> sandwich = persons.stream()
                 .filter(value -> value.getAge() > 18 && value.getAge() < 60 && value.getSex() == Sex.WOMEN && value.getEducation() == Education.HIGHER)
                 .sorted(Comparator.comparing(Person::getFamily))
+                .map(v -> v.getFamily())
                 .collect(Collectors.toList());
         System.out.println(sandwich);
 

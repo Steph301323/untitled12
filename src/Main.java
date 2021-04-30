@@ -7,7 +7,7 @@ class Main {
         List<String> names = Arrays.asList("Jack", "Connor", "Harry", "George", "Samuel", "John");
         List<String> families = Arrays.asList("Evans", "Young", "Harris", "Wilson", "Davies", "Adamson", "Brown");
         Collection<Person> persons = new ArrayList<>();
-        for (int i = 0; i < 10_000_000; i++) {
+        for (int i = 0; i < 1000; i++) {
             persons.add(new Person(
                     names.get(new Random().nextInt(names.size())),
                     families.get(new Random().nextInt(families.size())),
@@ -31,11 +31,11 @@ class Main {
                 .collect(Collectors.toList());
         System.out.println(die);
 
-        List<String> sandwich = persons.stream()
-                .filter(value -> value.getAge() > 18 || value.getAge() < 60 || value.getSex() == Sex.WOMEN || value.getEducation() == Education.HIGHER)
-                .filter(value ->  value.getAge() < 65 || value.getSex() == Sex.MAN || value.getEducation() == Education.HIGHER)
+        List<Person> sandwich = persons.stream()
+                .filter(value -> value.getAge() > 18 || value.getAge() < 60 || value.getSex() == Sex.WOMEN  && value.getAge() < 65 || value.getSex() == Sex.MAN )
+                .filter(v -> v.getEducation() == Education.HIGHER)
                 .sorted(Comparator.comparing(Person::getFamily))
-                .map(v -> v.getFamily())
+
                 .collect(Collectors.toList());
         System.out.println(sandwich);
 
